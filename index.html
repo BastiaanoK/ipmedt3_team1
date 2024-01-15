@@ -1,11 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
-</head>
-<body>
-    <p1>hello world!!!!!</p1>
-</body>
-</html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="policeCarModel" src="models\policeCar.gltf"></a-asset-item>
+        <a-asset-item id="muur_lang" src="muur.gltf"></a-asset-item>
+        <a-asset-item id="spuitbus_blauw" src="models\spuitbus_blauw.gltf"></a-asset-item>
+        <!--<a-sound id="#policeSiren" src="sounds/policeSiren.mp3" loop="true" volume="1"></a-sound>-->
+
+      </a-assets>
+
+      <a-entity 
+      gltf-model="#policeCarModel"
+      position="-10 0 -3"
+      rotation="0 90 0"
+      scale="0.5 0.5 0.5"
+      animation__move="property: position; to: 10 0 -3; dur: 7000; easing: linear; loop: true;"
+      
+    > </a-entity>
+    
+      
+     
+
+     
+
+      <!--<a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>-->
+
+      <a-plane
+        position="0 0 -4"
+        rotation="-90 0 0"
+        width="100"
+        height="100"
+        color="#808080"
+      ></a-plane>
+
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html
