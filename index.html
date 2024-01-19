@@ -1,42 +1,112 @@
-<html>
-  <head>
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  </head>
-  <body>
-    <a-scene>
-      <a-assets>
-        <a-asset-item id="policeCarModel" src="models\policeCar.gltf"></a-asset-item>
-        <a-asset-item id="muur_lang" src="muur.gltf"></a-asset-item>
-        <a-asset-item id="spuitbus_blauw" src="models\spuitbus_blauw.gltf"></a-asset-item>
-        <!--<a-sound id="#policeSiren" src="sounds/policeSiren.mp3" loop="true" volume="1"></a-sound>-->
+<!DOCTYPE html>
+<html lang="en">
 
-      </a-assets>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="/mixingColors.js"></script>
+  <script src="main.js"></script>
+  <script src="app.js"></script>
 
-      <a-entity 
-      gltf-model="#policeCarModel"
-      position="-10 0 -3"
-      rotation="0 90 0"
-      scale="0.5 0.5 0.5"
-      animation__move="property: position; to: 10 0 -3; dur: 7000; easing: linear; loop: true;"
-      
-    > </a-entity>
+
+  <title>My First VR World</title>
+</head>
+
+<body>
+  <a-scene id="js--scene">
+    <a-assets>
+      <a-asset-item id="brush-o" src="Spray_Color_blend.obj"></a-asset-item>
+      <a-asset-item id="brush-m" src="Spray_Color_blend.mtl"></a-asset-item>
+      <a-asset-item id="muur-o" src="muur_lang.obj"></a-asset-item>
+      <a-asset-item id="muur-m" src="muur_lang.mtl"></a-asset-item>
+    </a-assets>
+    <a-sky src="sky.jpg"></a-sky>
+
     
+
+    <a-camera id="js--camera" position="0 1.6 6">
+      <a-cursor  id="js--cursor" material = ""
+      geometry = "primitive: ring; radiusInner: 0.007 ; radiusOuter: 0.015"
+      animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 500; from: 1 1 1; to: 0.1 0.1 0.1"
+      animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 500; from: 0.1 0.1 0.1; to: 1 1 1" ></a-cursor>
+
+    </a-camera>
+
+    
+
+
+
+
+   
+    <a-plane id="canvas" class="js--paint" color="rgb(255, 255, 255)" height="6" width="6" position="1.5 0 2.5"></a-plane>
+  
+
+
+    <a-plane class="js--color" color="rgb(0, 0, 255)" height="1" width="1" position="-2 0 2.5"></a-plane>
+    <a-plane class="js--color" color="rgb(0, 255, 0)" height="1" width="1" position="-2 1 2.5"></a-plane>
+    <a-plane class="js--color" color="rgb(255, 0, 0)" height="1" width="1" position="-2 2 2.5"></a-plane>
+    <a-plane class="js--color" color="rgb(255, 255, 0)" height="1" width="1"position="-2 3 2.5"></a-plane>
+
+
+
+
+
+    <!-- brush -->
+    <a-entity class="js--pickup" obj-model="obj: #brush-o; mtl: #brush-m" position="0 2 5  0"
+      scale="0.3 0.3 0.3"></a-entity>
+      <a-plane static-body position="1 0 -4" rotation="-90 0 0" width="40" height="40"  color="#7BC8A4"></a-plane>
+
+
+      <!--muren -->
+
+      <!--linksmuur -->
+
+      <a-entity  obj-model="obj: #muur-o; mtl: #muur-m" position="-18 0 18 0" rotation="0 90 0"
+      scale="0.3 0.3 0.3"></a-entity>
+      <a-entity  obj-model="obj: #muur-o; mtl: #muur-m" position="-18 0 0 0" rotation="0 90 0"
+      scale="0.3 0.3 0.3"></a-entity>
+
+      <!--rechtmuur -->
+
+      <a-entity  obj-model="obj: #muur-o; mtl: #muur-m" position="18 0 0 0" rotation="0 90 0"
+      scale="0.3 0.3 0.3"></a-entity>
+      <a-entity  obj-model="obj: #muur-o; mtl: #muur-m" position="18 0 18 0" rotation="0 90 0"
+      scale="0.3 0.3 0.3"></a-entity>
+
       
-     
 
-     
+      <!--achtermuur -->
 
-      <!--<a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>-->
+      <a-entity  obj-model="obj: #muur-o; mtl: #muur-m" position="20 0 14 0" rotation="0 -180 0"
+      scale="0.3 0.3 0.3"></a-entity>
+      <a-entity  obj-model="obj: #muur-o; mtl: #muur-m" position="4 0 14 0" rotation="0 -180 0"
+      scale="0.3 0.3 0.3"></a-entity>
 
-      <a-plane
-        position="0 0 -4"
-        rotation="-90 0 0"
-        width="100"
-        height="100"
-        color="#808080"
-      ></a-plane>
 
-      <a-sky color="#ECECEC"></a-sky>
-    </a-scene>
-  </body>
-</html
+      <!--voormuur -->
+
+      <a-entity  obj-model="obj: #muur-o; mtl: #muur-m" position="18 0 -22 0" rotation="0 -180 0"
+      scale="0.3 0.3 0.3"></a-entity>
+      <a-entity  obj-model="obj: #muur-o; mtl: #muur-m" position="4 0 -22 0" rotation="0 -180 0"
+      scale="0.3 0.3 0.3"></a-entity>
+
+
+      
+
+  
+
+
+    <!--movement-->
+    <a-cylinder class="js--place" color="red" radius="1" height="0.1" position="0 0 6"></a-cylinder>
+    <a-cylinder class="js--place" color="red" radius="1" height="0.1" position="0 0 -6"></a-cylinder>
+    <a-cylinder class="js--place" color="red" radius="1" height="0.1" position="-6 0 0"></a-cylinder>
+    <a-cylinder class="js--place" color="red" radius="1" height="0.1" position="6 0 0"></a-cylinder>
+
+    
+    
+  </a-scene>
+</body>
+
+</html>
